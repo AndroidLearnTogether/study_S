@@ -7,4 +7,5 @@ public interface UserService {
 
     public User[] get(String email);
     public User[] get();
+    public String mather(User user);
 }

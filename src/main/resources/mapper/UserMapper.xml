@@ -22,7 +22,7 @@
     </select>
 
     <select id="getByEmail" resultMap="result">
-        SELECT *FROM user WHERE email = #{email}
+        SELECT * FROM user WHERE email = #{email}
     </select>
 
     <insert id="register" parameterType="com.example.demo.domain.User"
@@ -34,7 +34,7 @@
         , email
         , password
         )
-        VALUESe
+        VALUES
             (
                 #{idx}
             , #{email}

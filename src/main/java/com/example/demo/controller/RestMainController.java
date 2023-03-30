@@ -6,14 +6,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/free")
 @RequiredArgsConstructor
 public class RestMainController {
     private final UserService userService;
-    @PostMapping("/test")
-    public String Test(@RequestBody User user){
+    @PostMapping("/register")
+    public String register(@RequestBody User user) {
 
         return userService.register(user);
+    }
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+
+        return userService.mather(user);
     }
     @PostMapping("/get")
     public User[] Test(@RequestParam(name = "email") String email){
@@ -22,7 +27,5 @@ public class RestMainController {
         }else{
             return userService.get(email);
         }
-
-
     }
 }

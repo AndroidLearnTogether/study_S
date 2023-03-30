@@ -4,12 +4,14 @@ import com.example.demo.domain.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public User[] get(String email) {
@@ -22,7 +24,20 @@ public class UserServiceImpl implements UserService {
     }
 
     public String register(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userMapper.register(user);
         return user.getEmail();
+    }
+
+    public String mather(User user) {
+        User matherUser = userMapper.getByEmail(user.getEmail())[0];
+        if(matherUser == null) {
+            return "email not match";
+        }
+        if(passwordEncoder.matches(user.getPassword(), matherUser.getPassword())) {
+            return user.getEmail();
+        } else {
+            return "password not match";
+        }
     }
 }
