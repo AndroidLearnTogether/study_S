@@ -8,14 +8,8 @@
         <result property="idx" column="idx" />
         <result property="email" column="email" />
         <result property="password" column="password" />
+        <result property="authorities" column="authorities" />
     </resultMap>
-
-    <sql id="sql_select">
-        SELECT
-            a.idx
-             , a.email
-             , a.password
-    </sql>
 
     <select id="get" resultMap="result">
         SELECT * FROM user
@@ -33,12 +27,14 @@
             idx
         , email
         , password
+        , authorities
         )
         VALUES
             (
                 #{idx}
             , #{email}
             , #{password}
+            , #{authorities}
             )
     </insert>
 

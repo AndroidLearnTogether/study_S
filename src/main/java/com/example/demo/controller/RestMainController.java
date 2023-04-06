@@ -25,7 +25,7 @@ public class RestMainController {
         if(email.equals("")){
             return userService.get();
         }else{
-            return userService.get(email);
+            return new User[]{userService.get(email)};
         }
     }
 }

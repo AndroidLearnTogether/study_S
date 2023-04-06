@@ -5,7 +5,7 @@ import com.example.demo.domain.User;
 public interface UserService {
     public String register(User user);
 
-    public User[] get(String email);
+    public User get(String email);
     public User[] get();
     public String mather(User user);
 }

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public User[] get(String email) {
+    public User get(String email) {
         return userMapper.getByEmail(email);
     }
 
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public String mather(User user) {
-        User matherUser = userMapper.getByEmail(user.getEmail())[0];
+        User matherUser = userMapper.getByEmail(user.getEmail());
         if(matherUser == null) {
             return "email not match";
         }
