@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .antMatchers("/api/free/**").permitAll()
                 .antMatchers("/api/user/**").permitAll()//hasRole("USER")
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
 
         http.formLogin()
                 //.loginPage("/signin.do")
