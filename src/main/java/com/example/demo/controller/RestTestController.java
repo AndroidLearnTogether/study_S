@@ -1,9 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.User;
-import com.example.demo.service.Son;
-import com.example.demo.service.SonClass;
-import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
